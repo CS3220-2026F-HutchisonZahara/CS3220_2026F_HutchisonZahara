@@ -1,7 +1,10 @@
 # Import dependencies
 import streamlit as st
 import streamlit.components.v1 as components #to display the HTML code
-from st_image_button import st_image_button
+from streamlit_image_coordinates import streamlit_image_coordinates
+#pip install streamlit-image-coordinates
+
+#from st_image_button import st_image_button
 
 import networkx as nx #Networkx for creating graph data
 from pyvis.network import Network #to create the graph as an interactive html object
@@ -56,24 +59,8 @@ def main():
         columns_per_row = 3
         vars=list(basicSudokuCSP.variables)
         print(vars)
-        
-        '''j=0
-        
-        for i in range(num_rows):
-            # Create a set of columns for each row
-            cols = st.columns(columns_per_row)
-            
-            # Place elements within each column of the current row
-            for col_index, col in enumerate(cols):
-                with col:
-                    st.write(vars[j])
-                    options=basicSudokuCSP.domains[vars[j]]
-                    if len(options)==1:
-                        st.text_input("filled",value=options[0], disabled =True, key=f"filled_cell_{vars[j]}", label_visibility="hidden")
-                        #st.number_input("filled",value=options[0], disabled =True, key=f"filled_cell_{vars[j]}", label_visibility="hidden", step=None)
-                    else:
-                        st.selectbox("select",options,label_visibility="hidden", key=f"empty_cell_{vars[j]}")
-                j+=1'''
+        activeCell=None        
+
         
         j=0
         for i in range(num_rows):
@@ -90,6 +77,14 @@ def main():
                     if len(options)==1:
                         val=options[0]
                         print(val, imgCell[str(val)])
+                        st.image(imgCell[str(val)], caption=f"filled_cell_{vars[j]}")
+                        #value = streamlit_image_coordinates(imgCell[str(val)], key=f"button_{vars[j]}")
+                        #if value!=None:
+                            #activeCell=vars[j]
+                            #print(activeCell)
+                            #st.text(activeCell)
+
+
                         #st_image_button(f"{vars[j]}",imgCell[str(val)] , key=f"button_{vars[j]}")
                         #img = Image.open(imgCell[str(val)])
                         #st.button("",icon=imgCell[str(val)])
@@ -100,6 +95,19 @@ def main():
                     else:
                         val="empty"
                         print(val, imgCell[val])
+                        #st.image(imgCell[str(val)], caption=f"empty_cell_{vars[j]}")
+                        value = streamlit_image_coordinates(imgCell[str(val)], key=f"button_{vars[j]}")
+                        if value!=None:
+                            activeCell=vars[j]
+                            if ac3:
+                                strList=[str(i) for i in basicSudokuCSP.curr_domains[activeCell]]
+                                st.write(strList)
+                            else:
+                                strList=[str(i) for i in basicSudokuCSP.domains[activeCell]]
+                                st.write(strList)
+
+
+
                         #st_image_button(f"{vars[j]}",imgCell[val] , key=f"button_{vars[j]}")
                         #img = Image.open(imgCell[val])
                         #st.button("", icon=imgCell[val])
@@ -109,6 +117,8 @@ def main():
                         #if st_image_button(f"{vars[j]}",imgCell[val] , key=f"button_{vars[j]}"):
                             #st.session_state.last_click = vars[j]
                 j+=1
+        #st.text(activeCell)
+        #st.write(f"The current domain of the active cell: {basicSudokuCSP.curr_domains[activeCell]}")
 
         # Display the coordinates of the last clicked cell
         #if 'last_click' in st.session_state:
