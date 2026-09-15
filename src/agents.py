@@ -7,6 +7,7 @@ from src.rules import table
 
 #your code here
 from src.rules import a2proRules
+from src.rules import catRules
 
 
 
@@ -28,5 +29,10 @@ def ReflexAgentA2pro():
     #pass
     #your code here
     return Agent(ReflexAgentProgram(a2proRules,interpret_input_A2pro,rule_match_A2pro))
-  
+
+
+def ReflexAgentA3pro():#cat Agent
+    #pass
+    #your code here
+    return Agent(ReflexAgentProgram(catRules,interpret_input_A3pro,rule_match_A2pro))
 
