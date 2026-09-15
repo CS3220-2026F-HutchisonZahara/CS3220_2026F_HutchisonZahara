@@ -22,7 +22,7 @@ vacuumRules={((0, 0), 'Dirty'): 'Suck',
 
 
 
-#Rules for your Task3
+#Rules for your Task1
 
 a2proRules={'Office manager': 'Give mail', 
 'IT': 'Give donuts', 

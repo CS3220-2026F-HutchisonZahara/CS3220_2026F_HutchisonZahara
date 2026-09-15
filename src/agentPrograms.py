@@ -1,4 +1,7 @@
 import random
+from src.locations import *
+
+from src.Task1_YourRecipientsClasses import OfficeManager,Student,ITStaff
 
 '''An idea of Random Agent Program is to choose an action at random, ignoring all percepts'''
 def RandomAgentProgram(actions):
@@ -49,7 +52,7 @@ def rule_match(state, rules):
 
 
 
-#The code below -> for Task3 of the Assignment
+#The code below -> for Task1x of the Assignment
 
 
 
@@ -65,7 +68,7 @@ def interpret_input_A2pro(percept):
     for p in percepts:
       if isinstance(p, OfficeManager):
         return 'Office manager'
-      elif isinstance(p, ITStuff):
+      elif isinstance(p, ITStaff):
         return 'IT'
       elif isinstance(p, Student):
         return 'Student'
