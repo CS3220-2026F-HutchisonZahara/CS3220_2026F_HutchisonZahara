@@ -31,6 +31,6 @@ class Mouse(Food):
         print(f"There is a Mouse with a power {self.energy}")
 
 
-milk=Milk(weight=200,calories=50)
-sausage=Sausage(weight=150,calories=505)
-mouse=Mouse(size=2)
+#milk=Milk(weight=200,calories=50)
+#sausage=Sausage(weight=150,calories=505)
+#mouse=Mouse(size=2)
