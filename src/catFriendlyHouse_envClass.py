@@ -35,14 +35,14 @@ class catFriendlyHouse_env(environmentPro):
         items = self.list_things_at(agent.location, thingClass=Milk)
         agent.performance += items[0].energy
         self.update_agent_alive(agent)
-        print("The Agent decided to {} to {} at location: {}".format(action,items[0],agent.location))
+        print("The Agent decided to {} to {} at location: {}. Perforamce will be: {}".format(action,items[0],agent.location,agent.performance))
         self.delete_thing(items[0])
 
       elif action=='Eat':
         items = self.list_things_at(agent.location, thingClass=Sausage)
         agent.performance += items[0].energy
         self.update_agent_alive(agent)
-        print("The Agent decided to {} to {} at location: {}".format(action,items[0],agent.location))
+        print("The Agent decided to {} to {} at location: {}. Perforamce will be: {}".format(action,items[0],agent.location,agent.performance))
         self.delete_thing(items[0])
         
       elif action=='Catch':
@@ -51,9 +51,13 @@ class catFriendlyHouse_env(environmentPro):
           print(f"The agent Cat with a performance {agent.performance} is catching a mouse with power {items[0].energy}")
           agent.performance -= 100*items[0].size
           agent.performance += items[0].energy
-        self.update_agent_alive(agent)
-        print("The Agent decided to {} to {} at location: {}".format(action,items[0],agent.location))
-        self.delete_thing(items[0])
+          self.update_agent_alive(agent)
+          print("The Agent did {} to {} at location: {}. Perforamce will be:".format(action,items[0],agent.location, agent.performance))
+          self.delete_thing(items[0])
+        else:
+          print(f"The agent Cat with a performance {agent.performance} is just looking at a mouse with power {items[0].energy}. Weak Cat can't catch a Mouse. So sad!")
+
+
 
       elif action=='Stop':
         agent.alive=False
