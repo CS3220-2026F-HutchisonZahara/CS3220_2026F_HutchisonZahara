@@ -15,6 +15,9 @@ class catFriendlyHouse_env(environmentPro):
   def default_location(self, thing):
     print("The item is starting in random location...")
     return random.choice(self.locations)
+  
+    
+  
 
   def percept(self, agent):
     #return a list of things that are in our agent's location
