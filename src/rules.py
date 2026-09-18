@@ -32,11 +32,6 @@ a2proRules={'Office manager': 'Give mail',
 }
 
 #Rules for your Task2
-#your code here
-
-catRules={'Milk': 'Drink', 
-'Sausage': 'Eat', 
-'Mouse':'Catch',
-'Clear':'Go ahead',
-'Last room':'Stop'
+catRules={
+    #your code here
 }

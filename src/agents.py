@@ -26,13 +26,13 @@ def ReflexAgent() :
 
 
 def ReflexAgentA2pro():
-    #pass
-    #your code here
-    return Agent(ReflexAgentProgram(a2proRules,interpret_input_A2pro,rule_match_A2pro))
+    pass
+    #your code here for the Task1
+    
 
 
 def ReflexAgentA3pro():#cat Agent
-    #pass
-    #your code here
-    return Agent(ReflexAgentProgram(catRules,interpret_input_A3pro,rule_match_A2pro))
+    pass
+    #your code here for the Task2
+    
 

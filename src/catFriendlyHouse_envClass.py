@@ -21,56 +21,19 @@ class catFriendlyHouse_env(environmentPro):
 
   def percept(self, agent):
     #return a list of things that are in our agent's location
-    things = self.list_things_at(agent.location)
-    return agent.location, things
-
+    #your code here
+    pass
+    
   def execute_action(self, agent, action):
-    #from agents import Student, ITStuff,OfficeManager
     #changes the state of the environment based on what the agent does.
-    if self.is_agent_alive(agent):
-      if action=='Go ahead':
-        agent.location=self.locations[self.locations.index(agent.location)+1]
-        agent.performance -= 1
-        self.update_agent_alive(agent)
-        print("The Agent decided to {} at location: {}".format(action,agent.location))
-
-      elif action=='Drink':
-        items = self.list_things_at(agent.location, thingClass=Milk)
-        agent.performance += items[0].energy
-        self.update_agent_alive(agent)
-        print("The Agent decided to {} to {} at location: {}. Perforamce will be: {}".format(action,items[0],agent.location,agent.performance))
-        self.delete_thing(items[0])
-
-      elif action=='Eat':
-        items = self.list_things_at(agent.location, thingClass=Sausage)
-        agent.performance += items[0].energy
-        self.update_agent_alive(agent)
-        print("The Agent decided to {} to {} at location: {}. Perforamce will be: {}".format(action,items[0],agent.location,agent.performance))
-        self.delete_thing(items[0])
-        
-      elif action=='Catch':
-        items = self.list_things_at(agent.location, thingClass=Mouse)
-        if items[0].energy<agent.performance:
-          print(f"The agent Cat with a performance {agent.performance} is catching a mouse with power {items[0].energy}")
-          agent.performance -= 100*items[0].size
-          agent.performance += items[0].energy
-          self.update_agent_alive(agent)
-          print("The Agent did {} to {} at location: {}. Perforamce will be:".format(action,items[0],agent.location, agent.performance))
-          self.delete_thing(items[0])
-        else:
-          print(f"The agent Cat with a performance {agent.performance} is just looking at a mouse with power {items[0].energy}. Weak Cat can't catch a Mouse. So sad!")
-
-
-
-      elif action=='Stop':
-        agent.alive=False
+    #your code here
+    pass
     
   def is_done(self):
-    #from agents import Student, ITStuff,OfficeManager
-    #no_items = not any(isinstance(thing, ITStuff) or isinstance(thing, OfficeManager) for thing in self.things)
-    no_agents = not any(agent.is_alive() for agent in self.agents)
-    #return no_agents or no_items
-    return no_agents
+    #your code here
+    pass
+    
+    
 
 
 

@@ -81,21 +81,6 @@ def rule_match_A2pro(state, rules):
 
 
 def interpret_input_A3pro(percept):
+  pass
   #your code here
-  loc, percepts = percept
-  #print(percepts,loc, loc_D)
-  status='Clear'
-  if len(percepts)==0:
-    if loc==loc_C:
-      status='Last room'
-      #print(1)
-  else:
-    for p in percepts:
-      if isinstance(p, Milk):
-        return 'Milk'
-      elif isinstance(p, Sausage):
-        return 'Sausage'
-      elif isinstance(p, Mouse):
-        return 'Mouse'
-  print(status)
-  return status
+  
