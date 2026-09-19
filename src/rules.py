@@ -1,4 +1,4 @@
-from src.locations import loc_A,loc_B
+from src.locations import loc_A,loc_B, loc_C,loc_D
 
 actionList = ['Right', 'Left', 'Suck', 'NoOp']
 
@@ -35,3 +35,12 @@ a2proRules={'Office manager': 'Give mail',
 catRules={
     #your code here
 }
+
+cat2Rules={
+'Clear':'Go ahead',
+'Last room':'Change direction',
+'Mouse':'Catch',
+'Done':'Stop'
+}
+
+mouseAgentLocations = [loc_A,loc_B, loc_C,loc_D]

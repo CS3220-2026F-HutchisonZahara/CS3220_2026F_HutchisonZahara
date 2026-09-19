@@ -27,3 +27,20 @@ class Agent(Thing):
                 return eval(input('Percept={}; action? '.format(percept)))
 
         self.program = program
+
+directions={
+    True:'Left to Right',
+    False:'Right to Left',
+}
+
+class proCatAgent(Agent):
+
+    def __init__(self, program=None):
+        super.__init__(program)
+        #True: form Left to Right
+        self.direction = True
+        print(f"ProAgent-Cat will move {directions[self.direction]}")
+
+    def changeDirection(self):
+        self.direction = not(self.direction)
+        print(f"ProAgent-Cat will move {directions[self.direction]}")

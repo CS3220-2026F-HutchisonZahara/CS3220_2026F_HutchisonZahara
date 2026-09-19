@@ -4,6 +4,8 @@ from src.locations import *
 from src.Task1_YourRecipientsClasses import OfficeManager,Student,ITStaff
 from src.catFriendlyHouse_membersClass import Milk, Sausage, Mouse
 
+from src.agentClass import Agent
+
 '''An idea of Random Agent Program is to choose an action at random, ignoring all percepts'''
 def RandomAgentProgram(actions):
    return lambda percept: random.choice(actions)
@@ -64,7 +66,7 @@ def interpret_input_A2pro(percept):
   if len(percepts)==0:
     if loc==loc_D:
       status='Last room'
-      #print(1)
+      
   else:
     for p in percepts:
       if isinstance(p, OfficeManager):
@@ -83,4 +85,23 @@ def rule_match_A2pro(state, rules):
 def interpret_input_A3pro(percept):
   pass
   #your code here
+
+def interpret_input_A4pro(percept):
+  #for Cat-Agent & Mouse-RandomAgent
+  loc, percepts = percept
+  status='Clear'
+  if len(percepts)==0:
+    if loc==loc_D or loc==loc_A:
+      status='Last room'
+     
+  else:
+    for p in percepts:
+      if isinstance(p, Agent):
+        return 'Mouse'
+
+  print(status)
+  return status
+
+
+
   

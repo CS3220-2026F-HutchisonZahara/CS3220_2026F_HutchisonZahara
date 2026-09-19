@@ -7,7 +7,7 @@ from src.rules import table
 
 #your code here
 from src.rules import a2proRules
-from src.rules import catRules
+from src.rules import catRules, cat2Rules, mouseAgentLocations
 
 
 
@@ -34,5 +34,13 @@ def ReflexAgentA2pro():
 def ReflexAgentA3pro():#cat Agent
     pass
     #your code here for the Task2
+
+
+def RandomMouseAgent():
+    return Agent(RandomAgentProgram(mouseAgentLocations))
+
+
+def ReflexAgentA4pro():#cat Agent for mouse Agent
+    return Agent(ReflexAgentProgram(cat2Rules,interpret_input_A4pro,rule_match))
     
 
