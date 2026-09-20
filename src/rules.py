@@ -38,9 +38,9 @@ catRules={
 
 cat2Rules={
 'Clear':'Go ahead',
-'Last room':'Change direction',
-'Mouse':'Catch',
-'Done':'Stop'
+'Last room':'Check direction',
+'Mouse':'Catch'
+#'Done':'Stop'
 }
 
 mouseAgentLocations = [loc_A,loc_B, loc_C,loc_D]

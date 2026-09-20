@@ -4,7 +4,7 @@ from src.locations import *
 from src.Task1_YourRecipientsClasses import OfficeManager,Student,ITStaff
 from src.catFriendlyHouse_membersClass import Milk, Sausage, Mouse
 
-from src.agentClass import Agent
+from src.agentClass import MouseAgent
 
 '''An idea of Random Agent Program is to choose an action at random, ignoring all percepts'''
 def RandomAgentProgram(actions):
@@ -88,18 +88,27 @@ def interpret_input_A3pro(percept):
 
 def interpret_input_A4pro(percept):
   #for Cat-Agent & Mouse-RandomAgent
-  loc, percepts = percept
+  loc, agents,things = percept
+  percepts=agents+things
+  print(percepts)
   status='Clear'
-  if len(percepts)==0:
+
+  #if len(percepts)<=1:    
+      #status='Done'
+     
+  
+  for p in percepts:
+      if isinstance(p, MouseAgent):
+        print("Oh! the Mouse is here")
+        return 'Mouse'
+      
+  if status=='Clear':
     if loc==loc_D or loc==loc_A:
       status='Last room'
-     
-  else:
-    for p in percepts:
-      if isinstance(p, Agent):
-        return 'Mouse'
 
-  print(status)
+
+
+  print(f"Loc: {loc}, status: {status}")
   return status
 
 

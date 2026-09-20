@@ -32,17 +32,28 @@ class Environment:
         #Run the environment for one time step.
         if not self.is_done():
             actions = []
+
+            # 1. Collect actions only for agents that can actually act
             for agent in self.agents:
                 if agent.alive:
-                    #print(self.percept(agent))
+                    print(f"{type(agent).__name__} Performance: {agent.performance}")
+
+                    # Fetch percept and pass it to the agent's program
                     action=agent.program(self.percept(agent))
-                    print("Agent percepted {}.".format(self.percept(agent)))
+                    print("Agent {} percepted {}.".format(type(agent).__name__,self.percept(agent)))
                     print("Agent decided to do {}.".format(action))
                     actions.append(action)
                 else:
-                    print("Agent {} is dead.".format(agent))
+                    print("Agent {} is dead.".format(type(agent).__name__))
                     actions.append("")
-            for (agent, action) in zip(self.agents, actions):
+
+            # Debugging prints
+            print("Agents:", self.agents, "Actions:", actions)
+            print("Paired:", list(zip(self.agents, actions)))
+
+            # 2. Execute actions safely            
+            for agent, action in zip(self.agents, actions):
+                print(type(agent).__name__, action)
                 self.execute_action(agent, action)
         else:
           print("There is no one here who could work...")
@@ -51,6 +62,10 @@ class Environment:
   def run(self, steps=10):
         #Run the Environment for given number of time steps.
         for step in range(steps):
+            #env status on this step
+            for a in self.agents:
+              print(f"loc: {a.location}, perf: {a.performance}")
+  
             if self.is_done():
                 print("We can't find a live agent")
                 return
