@@ -47,7 +47,7 @@ class catFriendlyHouse2_env(environmentPro):
     print("The item is starting in random location...")
     return random.choice(self.locations)
   
-  #Return all things exactly at a given location
+  #Return all agants exactly at a given location
   def list_agents_at(self, location, thingClass=Thing):
     return [agent for agent in self.agents if agent.location == location and isinstance(agent, thingClass)]
     
