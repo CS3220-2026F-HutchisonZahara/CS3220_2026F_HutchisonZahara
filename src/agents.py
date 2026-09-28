@@ -1,46 +1,44 @@
-from src.agentPrograms import *
-from src.agentClass import Agent, MouseAgent, proCatAgent
+# from src.agentPrograms import *
+# from src.agentClass import Agent
 
-from src.rules import vacuumRules
-from src.rules import actionList
-from src.rules import table
-
-#your code here
-from src.rules import a2proRules
-from src.rules import catRules, cat2Rules, mouseAgentLocations
+# from src.rules import vacuumRules
+# from src.rules import actionList
+# from src.rules import table
 
 
 
 
-'''Randomly choose one of the actions from the vacuum environment'''
-def RandomVacuumAgent():
-    return Agent(RandomAgentProgram(actionList))
+# '''Randomly choose one of the actions from the vacuum environment'''
+# def RandomVacuumAgent():
+#     return Agent(RandomAgentProgram(actionList))
 
 
-def TableDrivenVacuumAgent():
-     return Agent(TableDrivenAgentProgram(table))
+# def TableDrivenVacuumAgent():
+#      return Agent(TableDrivenAgentProgram(table))
  
  
-def ReflexAgent() :
-  return Agent(ReflexAgentProgram(vacuumRules,interpret_input,rule_match))
+# def ReflexAgent() :
+#   return Agent(ReflexAgentProgram(vacuumRules,interpret_input,rule_match))
 
 
-def ReflexAgentA2pro():
-    pass
-    #your code here for the Task1
-    
+# def ReflexAgentA2pro():
+#     pass
+#     #your code here
+  
 
+# for the Assignment3
 
-def ReflexAgentA3pro():#cat Agent
-    pass
-    #your code here for the Task2
+from src.PS_agentPrograms import *
+from src.vacuumProblemSolvingAgentSMARTClass import VacuumProblemSolvingAgentSMART
+#from vacuumProblemSolvingAgentShowClass import VacuumProblemSolvingAgentDraw
+from src.navProblemSolvingAgentClass import navProblemSolvingAgent
 
+def ProblemSolvingVacuumAgentBFS(initState,vacuumWorldGraph,goalState):
+    return VacuumProblemSolvingAgentSMART(initState,vacuumWorldGraph,goalState,BestFirstSearchAgentProgram())
 
-def RandomMouseAgent():
-    return MouseAgent(RandomAgentProgram(mouseAgentLocations))
+ 
+def ProblemSolvingNavAgentBFS(initState,WorldGraph,goalState):
+    return navProblemSolvingAgent(initState,WorldGraph,goalState,BestFirstSearchAgentProgram())
 
-
-def ReflexAgentA4pro():#cat Agent for mouse Agent
-    return proCatAgent(ReflexAgentProgram(cat2Rules,interpret_input_A4pro,rule_match))
-    
-
+# def ProblemSolvingVacuumAgentBFSwithShow(initState,vacuumWorldGraph,goalState):
+#     return VacuumProblemSolvingAgentDraw(initState,vacuumWorldGraph,goalState,BestFirstSearchAgentProgramForShow())

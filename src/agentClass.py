@@ -1,4 +1,15 @@
-#This subclass of a base Thing class represents an Agent
+#This subclass of a base Thing class represents an Agent - based on lecture notes-3
+
+# Agent is defined by describing its behavior
+#How the insides work
+#The job of AI -> design an Agent Program (implements the Agent Function)
+
+#In general, the architecture
+#1. makes the percepts from the sensors available to the program,
+#2. runs the program,
+#3. and feeds the program’s action choices to the actuators as they are generated
+
+
 '''It has one required slot (attribute), .program, which reperesents Agent Program (the Core of Agent's logic).
 Agent Program should hold a function that takes one argument, the Percept, and returns an action.'''
 
