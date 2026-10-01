@@ -1,5 +1,0 @@
-.venv
-/.idea/
-/uv.lock
-/pyproject.toml
-__pycache__/
