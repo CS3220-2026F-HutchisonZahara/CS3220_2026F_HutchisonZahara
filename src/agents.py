@@ -1,5 +1,5 @@
 from src.agentPrograms import *
-from src.agentClass import Agent, MouseAgent, proCatAgent
+from src.agentClass import Agent, MouseAgent, proCatAgent, CatAgent
 
 from src.rules import vacuumRules
 from src.rules import actionList
@@ -31,8 +31,7 @@ def ReflexAgentA2pro():
 
 
 def ReflexAgentA3pro():#cat Agent
-    pass
-    #your code here for the Task2
+    return CatAgent(ReflexAgentProgram(catRules,interpret_input_A3pro,rule_match_A2pro))
 
 
 def RandomMouseAgent(): #for the Task3

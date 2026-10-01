@@ -28,6 +28,42 @@ class Agent(Thing):
 
         self.program = program
 
+class CatAgent(Agent):
+
+    def __init__(self, program=None):
+        super().__init__(program)
+        self.direction = True
+
+    def changeDirection(self):
+        self.direction = not self.direction
+
+    def drink(self, food):
+        from src.catFriendlyHouse_membersClass import Milk
+        if not isinstance(food, Milk):
+            print(f"The Cat can't drink {food}!")
+            return False
+        self.performance += food.energy
+        return True
+
+    def eat(self, food):
+        from src.catFriendlyHouse_membersClass import Sausage
+        if not isinstance(food, Sausage):
+            print(f"The Cat can't eat {food}!")
+            return False
+        self.performance += food.energy
+        return True
+
+    def catch(self, mouse):
+        from src.catFriendlyHouse_membersClass import Mouse
+        if not isinstance(mouse, Mouse):
+            print(f"The Cat can't catch {mouse}!")
+            return False
+        if self.performance < mouse.size * 10:
+            return False
+        self.performance += mouse.energy // 100
+        return True
+
+
 directions={
     True:'Left to Right',
     False:'Right to Left',

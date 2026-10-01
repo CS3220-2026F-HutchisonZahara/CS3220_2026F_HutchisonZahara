@@ -83,8 +83,12 @@ def rule_match_A2pro(state, rules):
 
 
 def interpret_input_A3pro(percept):
-  pass
-  #your code here
+  loc, status = percept
+  if isinstance(status, list):
+    for item in ['Sausage', 'Milk', 'Mouse']:
+      if item in status:
+        return item
+  return status
 
 def interpret_input_A4pro(percept):
   #for Cat-Agent & Mouse-RandomAgent
