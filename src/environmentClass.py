@@ -30,9 +30,8 @@ class Environment:
 
   def step(self):
         #Run the environment for one time step.
+        actions = [] # FIXED THIS BECUASE IT WAS CRASHING LOLS
         if not self.is_done():
-            actions = []
-
             # 1. Collect actions only for agents that can actually act
             for agent in self.agents:
                 if agent.alive:

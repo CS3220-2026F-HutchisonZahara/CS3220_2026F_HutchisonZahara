@@ -26,9 +26,8 @@ def ReflexAgent() :
 
 
 def ReflexAgentA2pro():
-    pass
-    #your code here for the Task1
-    
+    return Agent(ReflexAgentProgram(a2proRules,interpret_input_A2pro,rule_match_A2pro))
+
 
 
 def ReflexAgentA3pro():#cat Agent
