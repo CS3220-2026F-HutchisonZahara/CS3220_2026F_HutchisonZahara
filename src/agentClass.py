@@ -1,4 +1,4 @@
-#This subclass of a base Thing class represents an Agent
+# This subclass of a base Thing class represents an Agent
 '''It has one required slot (attribute), .program, which reperesents Agent Program (the Core of Agent's logic).
 Agent Program should hold a function that takes one argument, the Percept, and returns an action.'''
 
@@ -9,16 +9,18 @@ It's not supposed to do that: the program can only look at the percepts'''
 '''
 There is an optional slot, .performance, which is a number giving
 the performance measure of the agent in its environment.'''
+import \
+    collections  # we need collections.abc which provides abstract base classes that can be used to test whether a class provides a particular interface
+
 from src.thingClass import Thing
 
-import collections #we need collections.abc which provides abstract base classes that can be used to test whether a class provides a particular interface
 
 class Agent(Thing):
 
     def __init__(self, program=None):
         self.alive = True
         self.performance = 0
-        self.location=None
+        self.location = None
 
         if program is None or not isinstance(program, collections.abc.Callable):
             print("Can't find a valid program for {}, falling back to default.".format(self.__class__.__name__))
@@ -27,6 +29,7 @@ class Agent(Thing):
                 return eval(input('Percept={}; action? '.format(percept)))
 
         self.program = program
+
 
 class CatAgent(Agent):
 
@@ -64,10 +67,11 @@ class CatAgent(Agent):
         return True
 
 
-directions={
-    True:'Left to Right',
-    False:'Right to Left',
+directions = {
+    True: 'Left to Right',
+    False: 'Right to Left',
 }
+
 
 class proCatAgent(Agent):
 
@@ -81,7 +85,6 @@ class proCatAgent(Agent):
     def changeDirection(self):
         self.direction = not self.direction
         print(f"ProAgent-Cat will move {directions[self.direction]}")
-
 
 
 class MouseAgent(Agent):
