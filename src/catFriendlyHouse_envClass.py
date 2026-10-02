@@ -12,7 +12,7 @@ from src.agentClass import Agent, proCatAgent, MouseAgent
 class catFriendlyHouse_env(environmentPro):
   def __init__(self):
     super().__init__()
-    self.locations=[loc_A, loc_B, loc_C]
+    self.locations=[loc_A, loc_B, loc_C, loc_D]
 
   def default_location(self, thing):
     print("The item is starting in random location...")
@@ -93,17 +93,11 @@ class catFriendlyHouse2_env(environmentPro):
   
   #Return all agants exactly at a given location
   def list_agents_at(self, location, thingClass=Thing):
-      #your code here
-      pass
-    
-  
+    return [a for a in self.agents if isinstance(a, thingClass) and a.location == location]
 
   def percept(self, agent):
-    #return a list of things AND a list of agents that are in our agent's location
-    #your code here
-    pass
-    #return agent.location, things, agents
-  
+    return agent.location, self.list_things_at(agent.location), self.list_agents_at(agent.location)
+
 
   def add_thing(self, thing, location=None): # improved  
     # perf = original one not 0 like in parent class
@@ -129,42 +123,47 @@ class catFriendlyHouse2_env(environmentPro):
       #the current agent is Cat & Mouse is still there
       if isinstance(agent, proCatAgent) and len(self.agents+self.things)>0:
         print("Some items are still there ....")
-        if action=='Go ahead':
-          #your code here
-          pass
-          
+
+        if action=='Go ahead' or action == 'Check direction':
+          i = self.locations.index(agent.location)
+          if (agent.direction and i == len(self.locations) - 1) or (not agent.direction and i == 0):
+            agent.changeDirection()
+            print("Last room! Some items are still there -> the Cat turns around")
+          agent.location = self.locations[i + 1 if agent.direction else i - 1]
+          agent.performance -= 5
+          print(f"The Cat moved to location: {agent.location}")
 
         elif action=='Catch':
-          #your code here
-          pass
-        
-        elif action=='Check direction':
-          #your code here
-          pass
-          
+          mice = [mouse for mouse in self.list_agents_at(agent.location, MouseAgent)]
+          if mice:
+            mouse = mice[0]
+            if agent.performance < mouse.performance * 5:
+              agent.performance -= 10
+              print(f"The Cat is too weak (performance: {agent.performance}) - the Mouse survived and ran away!")
+            else:
+              agent.performance += 10
+              print(f"The Agent did Catch {mouse} at location: {agent.location}")
+              print("There is nothing for Agent Cat here. Done!")
+              self.agents.remove(mouse)
+              agent.alive = False
+          else:
+            print(f"Agent tried to Catch, but no MouseAgent was found at {agent.location}.")
+
+        if agent.performance <= 0:
+          print("The Cat is too weak - Game over")
+          agent.alive = False
 
       elif isinstance(agent, MouseAgent):
-        #your code here
-        pass
+        print(f"the Agent Mouse is still running with a performance {agent.performance}")
+        print(f"The Agent Mouse decided to move to {action}")
+        agent.location = action
+        agent.performance -= 1
+        if agent.performance <= 0:
+          agent.alive = False
+          print(f"Agent {agent} is dead.")
 
-      else:
-          print("There is nothing for Agent Cat here. Done!")
-          agent.alive=False
-    
-    
+
   def is_done(self):
-    no_agents = not any(agent.is_alive() for agent in self.agents)
+    no_agents = not any(agent.is_alive() and isinstance(agent, proCatAgent) for agent in self.agents)
     #return no_agents or no_items
     return no_agents
-    
-    
-
-
-
-
-
-
-
-
-  
-
