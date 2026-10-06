@@ -1,9 +1,18 @@
 # for the Assignment3
 
 from src.PS_agentPrograms import *
+from src.mazeProblemSolvingAgentSMARTClass import MazeProblemSolvingAgentSMART
+
+
+
 from src.vacuumProblemSolvingAgentSMARTClass import VacuumProblemSolvingAgentSMART
 #from vacuumProblemSolvingAgentShowClass import VacuumProblemSolvingAgentDraw
 from src.navProblemSolvingAgentClass import navProblemSolvingAgent
+
+
+def ProblemSolvingMazeAgentBFS(initState,mazeWorldGraph,goalState):
+    return MazeProblemSolvingAgentSMART(initState,mazeWorldGraph,goalState,BestFirstSearchAgentProgram())
+
 
 def ProblemSolvingVacuumAgentBFS(initState,vacuumWorldGraph,goalState):
     return VacuumProblemSolvingAgentSMART(initState,vacuumWorldGraph,goalState,BestFirstSearchAgentProgram())

@@ -36,6 +36,7 @@ class Node:
     def child_node(self, problem, action):
         #using the RESULT function to see where those actions lead to
         next_state = problem.result(self.state, action)
+        print("next_state", next_state)
         # and generating a new node (called a child node)
         #for each of the resulting states
         next_node = Node(next_state, self, action, problem.path_cost(self.path_cost, self.state, action, next_state))
