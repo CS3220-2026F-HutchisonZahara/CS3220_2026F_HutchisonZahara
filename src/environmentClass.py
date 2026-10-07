@@ -62,7 +62,7 @@ class Environment:
       print("Can't add the same agent twice")
     else:
       if isinstance(thing, SimpleProblemSolvingAgentProgram):
-        thing(thing.state)
+        thing(thing.state) # call the agent's program (via __call__ method) with its initial state to get the sequence of actions
         #thing.performance = 0
         #thing.location = location if location is not None else self.default_location(thing)
         print(f"The Agent in {thing.state} with performance {thing.performance}")

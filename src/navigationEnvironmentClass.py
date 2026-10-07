@@ -8,7 +8,7 @@ class MazeNavigationEnvironment(Environment):
     
 
   def percept(self, agent):
-    #Returns the agent's location, and the location status (Dirty/Clean).
+    #Returns the agent's location, and the location status .
     return agent.state
 
   def is_agent_alive(self, agent):
