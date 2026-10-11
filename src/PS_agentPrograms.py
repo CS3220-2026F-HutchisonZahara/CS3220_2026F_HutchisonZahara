@@ -22,7 +22,7 @@ def BestFirstSearchAgentProgram(f=None):
       #node.color=nodeColors["frontier"]
       reached = {problem.initial:node}
 
-      while frontier:
+      while not frontier.empty():
         node = frontier.get()[1]
         #node.color=nodeColors["expanded"]
         print(node)

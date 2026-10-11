@@ -88,9 +88,9 @@ def defineMazeAvailableActions(arr):
         else:
           mazeAvailableActions.setdefault((i,j),[actions_dict[0],actions_dict[1]])
           if arr[i-1,j]==0:
-            mazeAvailableActions[i,j].remove(actions_dict[0])
-          if arr[i,j-1]==0:
             mazeAvailableActions[i,j].remove(actions_dict[1])
+          if arr[i,j-1]==0:
+            mazeAvailableActions[i,j].remove(actions_dict[0])
       elif i==0:
         if arr[i,j]==0:
           mazeAvailableActions.setdefault((i,j),[])
