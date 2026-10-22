@@ -30,7 +30,7 @@
 
 import math
 
-from src.PS_agentPrograms import A_StarSearchAgentProgram
+from src.PS_agentPrograms import A_StarSearchAgentProgram, IDA_StarSearchAgentProgram, RBFS_SearchAgentProgram, manhat_dist
 from src.mazeProblemSolvingAgentSMARTClass import MazeProblemSolvingAgentSMART
 #from vacuumProblemSolvingAgentShowClass import VacuumProblemSolvingAgentDraw
 #from src.navProblemSolvingAgentClass import navProblemSolvingAgent
@@ -39,6 +39,18 @@ def ProblemSolvingMazeAgentAstar(initState,mazeWorldGraph,goalState):
     #Astar_AP_EvcDist=A_StarSearchAgentProgram(math.dist)
     #return MazeProblemSolvingAgentSMART(initState,mazeWorldGraph,goalState,Astar_AP_EvcDist)
     return MazeProblemSolvingAgentSMART(initState,mazeWorldGraph,goalState,A_StarSearchAgentProgram(math.dist))
+
+# task 2
+def ProblemSolvingMazeAgentAstarManhat(initState, mazeWorldGraph, goalState):
+    return MazeProblemSolvingAgentSMART(initState, mazeWorldGraph, goalState, A_StarSearchAgentProgram(manhat_dist))
+
+# task 7
+def ProblemSolvingMazeAgentIDAstar(initState, mazeWorldGraph, goalState):
+    return MazeProblemSolvingAgentSMART(initState, mazeWorldGraph, goalState, IDA_StarSearchAgentProgram(manhat_dist))
+
+# task 8
+def ProblemSolvingMazeAgentRBFS(initState, mazeWorldGraph, goalState):
+    return MazeProblemSolvingAgentSMART(initState, mazeWorldGraph, goalState, RBFS_SearchAgentProgram(manhat_dist))
 
 
 # def ProblemSolvingMazeAgentBFS(initState,mazeWorldGraph,goalState):

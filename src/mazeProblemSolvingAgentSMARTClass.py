@@ -19,7 +19,7 @@ class MazeProblemSolvingAgentSMART(MazeProblemSolvingAgent):
     seq = self.program(problem)
     solution=self.actions_path(seq.path()) if seq else None
     print("Solution (a sequence of actions) from the initial state to a goal: {}".format(solution))
-    self.path=seq.path()
+    self.path=seq.path() if seq else None
     return solution
   
   def actions_path(self, p):
